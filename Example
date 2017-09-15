@@ -1,0 +1,56 @@
+// TAMANHO means SIZE in english. Pretty much is defining the image to be 1000x900 pixels
+TAMANHO (1000:900)
+
+// Here I created 4 objects which are PONTO (point in english)
+centerHEAD is PONTO[(500,500)]
+neck is PONTO[(500, 540)]
+arms is PONTO[(500, 550)]
+legs is PONTO[(500, 650)]
+
+// Creating CIRCULO object (circle in english)
+head is CIRCULO[centroCabeca; 40]
+
+// Creating a class with the object needed to draw a stickman (RETA is straight)
+stickman is {
+	(C=(255,0,255))
+	head
+	torso is RETA[pescoco; pernas]
+	rightarm is RETA[bracos; (450,600)]
+	leftarm is RETA[bracos; (550,600)]
+	rightleg is RETA[pernas; (450, 700)]
+	leftleg is RETA[pernas; (550, 700)]
+}
+
+// Examples, feels free to uncomment and test them!
+
+
+// Example 1 - Draws the stickman
+/*
+	PINTAR stickman
+*/
+
+// Example 2 - Updates stickman thickness
+/*
+	UPDATE stickman.G = 30
+	DESENHAR stickman
+*/
+
+// Example 3 - Updates stickman color
+/*
+	UPDATE stickman.C = (16,205,66)
+	DESENHAR stickman
+*/
+
+// Example 4 - Updates stickman's head thickness and center point
+/*
+	UPDATE head.G = 30
+	UPDATE head.p = (500, 450)
+	DESENHAR stickman
+*/
+
+// Example 5 - Updates stickman's torso points
+/*
+	UPDATE torso.p1 = (550, 540)
+	UPDATE torso.p2 = (550, 650)
+	DESENHAR stickman
+*/

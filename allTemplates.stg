@@ -1,0 +1,79 @@
+
+
+code(name, width, height, cor, actions) ::= <<
+
+import cv2
+import os
+import os.path
+import numpy as np
+from math import sqrt
+
+# cria um novo diretorio caso nao exista
+directory = os.path.dirname(os.path.abspath(__file__)) + "/image/"
+if not os.path.exists(directory):
+            os.makedirs(directory)
+if <name> not in os.path.dirname(os.path.abspath(__file__)):
+	Exception("ERROR: Image Not Found!")
+
+if <name> == '':
+    # cria nova imagem com tamanho width x height
+    img = np.zeros((<width>, <height>, 3), np.uint8)
+    # preenche a imagem a branco
+    img[:] = <cor>
+else:
+    # le a imagem do diretorio
+    img = cv2.imread(<name>, 1)
+
+height = np.size(img, 0)
+width = np.size(img, 1)
+
+<actions>
+
+if <name> == '':
+    cv2.imwrite(str(directory) + 'newImage.jpg', img)
+else:
+    cv2.imwrite(str(directory) + 'new' + <name>, img)
+
+>>
+
+draw_line(origemX, origemY, destinoX, destinoY, color, grossura) ::= <<
+cv2.line(img, (<origemX>, <origemY>), (<destinoX>, <destinoY>), <color>, <grossura>)
+
+>>
+
+draw_circle(X, Y, R, color, grossura) ::= <<
+cv2.circle(img,(<X>, <Y>), <R>, <color>, <grossura>)
+
+>>
+
+definition(object) ::= <<
+<object>
+
+>>
+
+
+draw_triangle(X, Y, R, grossura, color) ::= <<
+a = int(sqrt(3) * <R>)
+r = int(<R> / 2)
+
+cv2.line(img, (<X>, <X> + <R>), (<X> + a, <Y> - r), <color>, <grossura>)
+cv2.line(img, (<X> + a, <Y> - r) , (<X> - a , <Y> - r ), <color>, <grossura>)
+cv2.line(img, (<X> - a , <Y> - r), (<X>, <X> + <R>) , <color>, <grossura>)
+
+>>
+
+draw_rectangle(origemX, origemY, destinoX, destinoY, color, grossura) ::= <<
+cv2.rectangle(img,(<origemX>,<origemY>),(<destinoX>,<destinoY>),<color>,<grossura>)
+
+>>
+
+draw_ellipse(origemX, origemY, destinoX, destinoY, angle, startangle, endangle, color, grossura) ::= <<
+cv2.ellipse(img,(<origemX>,<origemY>),(<destinoX>,<destinoY>),<angle>,<startangle>,<endangle>,<color>,<grossura>)
+
+>>
+
+draw_polygon(array,bool,color,grossura) ::= <<
+points = np.array([<array>])
+cv2.polylines(img,np.int32([points]),<bool>,<color>,<grossura>)
+
+>>
