@@ -9,9 +9,13 @@ After cloning this project you can find a Makefile, just run ```make``` to build
 Now you can create a text file and write the code you wish to run (or just stick to the "Example" file).
 
 Compile your code (this will generate 'Result_Image.py'):
+
 	```cat yourFile | java TintaMain```
+	
 Run your compiled code:
+
 	```python Result_Image.py```
+
 
 In 'Example' file you can find comment code that shows what you can do with it.
 
