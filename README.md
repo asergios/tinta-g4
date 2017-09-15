@@ -10,11 +10,11 @@ Now you can create a text file and write the code you wish to run (or just stick
 
 Compile your code (this will generate 'Result_Image.py'):
 
-	```cat yourFile | java TintaMain```
+	cat yourFile | java TintaMain
 	
 Run your compiled code:
 
-	```python Result_Image.py```
+	python Result_Image.py
 
 
 In 'Example' file you can find comment code that shows what you can do with it.
